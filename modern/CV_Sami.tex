@@ -1,0 +1,503 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2015 Jan Küster
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+
+%============================================================================%
+%
+%	DOCUMENT DEFINITION
+%
+%============================================================================%
+
+%we use article class because we want to fully customize the page and dont use a cv template
+\documentclass[10pt,A4]{article}	
+
+
+%----------------------------------------------------------------------------------------
+%	ENCODING
+%----------------------------------------------------------------------------------------
+
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}		
+
+%----------------------------------------------------------------------------------------
+%	LOGIC
+%----------------------------------------------------------------------------------------
+
+% provides \isempty test
+\usepackage{xifthen}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% some tex-live fonts - choose your own
+
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[default]{comfortaa}
+%\usepackage{cmbright}
+\usepackage[default]{raleway}
+%\usepackage{fetamont}
+%\usepackage[default]{gillius}
+%\usepackage[light,math]{iwona}
+%\usepackage[thin]{roboto} 
+
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T1]{fontenc}
+\usepackage{enumitem, hyperref}
+\newcommand{\ts}{\textsuperscript}
+
+% more font size definitions
+\usepackage{moresize}		
+
+
+%----------------------------------------------------------------------------------------
+%	PAGE LAYOUT  DEFINITIONS
+%----------------------------------------------------------------------------------------
+
+%debug page outer frames
+%\usepackage{showframe}			
+
+
+%define page styles using geometry
+\usepackage[a4paper]{geometry}		
+
+% for example, change the margins to 2 inches all round
+\geometry{top=1cm, bottom=0.8cm, left=1.5cm, right=1.5cm} 	
+
+%use customized header
+\usepackage{fancyhdr}				
+\pagestyle{fancy}
+
+%less space between header and content
+%\setlength{\headheight}{-1.2cm}		
+
+
+%customize entries left, center and right
+\lhead{}
+\chead{ 
+	%\small{Sami Abdul Sater  $\cdot$ MA Ir. Informatique, BA. Sc. Physiques $\cdot$  Bruxelles, BEL  $\cdot$  \textcolor{sectcol}{\textbf{samiabdulsater@gmail.com}  $\cdot$ +32 487 35 53 25}
+}
+\rhead{}
+
+
+%indentation is zero
+\setlength{\parindent}{0mm}
+
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+\usepackage{color}
+% Code couleur
+\definecolor{LighterBlue}{rgb}{0.2,0.24,0.47}
+\definecolor{DarkBlue}{rgb}{0.11,0.15,0.41}
+\definecolor{NormalRed}{rgb}{0.9,0.2,0.16}
+
+%accent color
+\definecolor{OLDsectcol}{RGB}{50,0,0}
+%\definecolor{sectcol}{rgb}{0.11,0.15,0.41}
+\definecolor{bgcol}{rgb}{0.11,0.15,0.41}
+
+%dark background color
+\definecolor{OLDbgcol}{RGB}{110,110,110}
+\definecolor{sectcol}{rgb}{0.11,0.15,0.41}
+%\definecolor{bgcol}{rgb}{0.9,0.2,0.16}
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}
+
+%arrow color
+\definecolor{arrowcol}{rgb}{0,0.45,0.73}
+
+
+%============================================================================%
+%
+%
+%	DEFINITIONS
+%
+%
+%============================================================================%
+
+%----------------------------------------------------------------------------------------
+% 	HEADER
+%----------------------------------------------------------------------------------------
+
+% remove top header line
+\renewcommand{\headrulewidth}{0pt} 
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}	  	
+
+%remove pagenum
+\renewcommand{\thepage}{}	
+
+%remove section num		
+\renewcommand{\thesection}{}			
+
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
+}
+
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+ \end{tikzpicture}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	custom sections
+%----------------------------------------------------------------------------------------
+
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+\colorbox{sectcol}{\mystrut \makebox[1\linewidth][l]{
+\larrow{white} \hspace{-6pt} \larrow{white} \hspace{-6pt} \larrow{white} \textcolor{white}{\textbf{#1}}\hspace{4pt}
+}}\\
+}
+
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+\begin{tabular*}{1\textwidth}{p{0.2\linewidth} p{0.75\linewidth}}
+\larrow{bgcol}	\normalsize{\textcolor{sectcol}{#1}}&#2\\[12pt]
+\end{tabular*}
+}
+
+%----------------------------------------------------------------------------------------
+%	 CV EVENT
+%----------------------------------------------------------------------------------------
+
+% creates a stretched box as cv entry headline followed by two paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	what was your position
+% param 5:	some words about your contributions
+%
+\newcommand{\cvevent}[5]
+{
+\vspace{8pt}
+	\begin{tabular*}{1\textwidth}{p{2.7cm}  p{7.7cm} x{6.7cm}}
+ \small{\textcolor{bgcol}{#1}}& \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
+
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{p{2.7cm} p{14.4cm}}
+&		 \larrow{bgcol}  #4\\[3pt]
+&		 \larrow{bgcol}  #5\\[6pt]
+	\end{tabular*}
+
+}
+
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%----------------------------------------- -----------------------------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM LOREM IPSUM
+%----------------------------------------------------------------------------------------
+\newcommand{\lorem}
+{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.}
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT CONTENT
+%
+%
+%
+%============================================================================%
+\begin{document}
+
+
+%use our custom fancy header definitions
+\pagestyle{fancy}	
+
+
+%---------------------------------------------------------------------------------------
+%	TITLE HEADLINE
+%----------------------------------------------------------------------------------------
+
+% use this for multiple words like working titles etc.
+%\hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\hspace{46pt}\HUGE{\textcolor{white}{\textsc{Jan Küster}} } \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} \parbox[b]{5cm}{   \large{ \textcolor{white}{{IT Consultant}}}\\
+% \large{ \textcolor{white}{{Resume}}}}
+%}}
+
+% use this for single words, e.g. CV or RESUME etc.
+\newgeometry{top=0.1cm, bottom=0.8cm, left=1.5cm, right=1.5cm} 	
+\hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\huge{\textcolor{white}{\textsc{
+	Sami Abdul Sater
+	}} } \textcolor{white}{\rule[-1mm]{1mm}{0.9cm}} \huge{\textcolor{white}{\textsc{
+		Curriculum Vitae
+		}} } }}
+
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER IMAGE
+%----------------------------------------------------------------------------------------
+
+\vspace{2pt}
+\cvsection{Résumé}
+\\[2pt]
+\begin{minipage}{\textwidth}
+	\centering
+	\begin{minipage}{0.6\textwidth}
+		Je suis un étudiant en première année de Master en ingénierie informatique et en 3\ts{ème} année de Bachelier en sciences physiques, portant un grand intérêt pour les technologies de l'information, la cryptographie, et une passion particulière pour la physique. Je recherche un stage dans le domaine de l'informatique quantique, qui réunit à la fois mes intérêts et ma passion, et ce dans l'environnement de la recherche où j'envisage ma carrière.\\[2pt]
+
+		\metasection{Statut:}{MA Ingénieur informaticien, BA Sc. Physiques, Etudiant-assistant}
+		\metasection{Domaines:}{Cryptographie, Bases de données, informatique quantique} 
+	\end{minipage}
+	\begin{minipage}{0.35\textwidth}
+		\centering
+		\begin{figure}[H]
+			\centering
+			\vspace{-0.5cm}
+			\includegraphics[width=0.7\linewidth]{myfoto_2.png}	%trimming relative to image size!
+		\end{figure}
+	\end{minipage}
+\end{minipage}\\[3pt]
+
+%---------------------------------------------------------------------------------------
+%	QR CODE (optional)
+%----------------------------------------------------------------------------------------
+%\vspace{-136pt}
+%\hspace{0.75\linewidth}
+%\includegraphics[width=103pt]{qrcode}
+%\normalsize
+%\vspace{88pt}
+
+%============================================================================%
+%
+%	CV SECTIONS AND EVENTS (MAIN CONTENT)
+%
+%============================================================================%
+
+%---------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\cvsection{Education}
+
+\cvevent{2021 - Présent}
+{
+	Master d'Ingénieur civil en informatique
+}
+{
+	Université Libre de Bruxelles
+}
+{
+	Cours notables :  Theory of information coding and computing, Quantum information and computation, Protocols, cryptanalysis and mathematical cryptology, Data warehouses. 
+	\\[-1pt]
+	}
+{
+	Ma formation d'ingénieur informaticien est ma formation principale. Elle m'offre les concepts théoriques, les outils nécessaires à la modélisation numérique du monde, la manipulation et la protection de l'information.
+	\\[-2pt]
+}
+
+\cvevent{2020 - Présent}{Bachelier en Sciences Physiques}{Université Libre de Bruxelles}{
+	Cours notables : Mécanique Quantique, Relativité restreinte, Electromagnétisme.
+	\\[-1pt]
+}{
+	En parallèle à ma formation d'ingénieur, je réalise un parcours en Faculté des Sciences. Une offre de formation en physique plus théorique que celle offerte par les cours de physique du bachelier en ingénierie. \\[2pt]
+}
+
+\cvevent{2018-2021}{Bachelier en sciences de l'ingénieur (diplômé)}{Université Libre de Bruxelles}{
+	Mineure en informatique. Cours notables : Programmation Orientée Objet, Compléments de Programmation et d'Algorithmique, Systèmes d'exploitation, Base de données, Recherche Opérationnelle, Génie logiciel, divers cours d'Electronique, ...
+	\\[-1pt]
+}{
+	Diplôme obtenu avec \textit{Grande distinction} : 16.4/20.\\[2pt]
+}
+\cvevent{2012-2018}{Diplôme de l'enseignement secondaire (CESS)}{Athenée Robert Catteau}{
+	Travail de fin d'études sur l'étude et l'observation de l'infiniment petit et l'infiniment grand : "\textit{Comment voir ce que l'œil ne voit pas ? De l'infiniment petit à  l'infiniment grand}". J'y ai parlé d'instruments optiques (microscope, télescope), d'accélérateurs de particules, ...
+}{
+	Diplôme obtenu avec \textit{Grande distinction}.\\[2pt]
+	}
+
+\cvsection{Projets académiques}
+\\[2pt]
+\hspace{3pt}MA Ir. Informatique 
+\begin{itemize}[label=\larrow{bgcol}]
+	\item Application de messagerie sécurisée.
+	\item Compilateur pour un langage fictif.
+\end{itemize}
+
+\hspace{3pt}BA Sc. Physiques
+\begin{itemize}[label=\larrow{bgcol}]
+	\item Projet d'exposition au Printemps des Sciences (ULB) : \textit{La lévitation acoustique}.
+	\item Stage de recherche au sein du service d'Informatique Quantique (QuIC) sous la direction de Pr. Jérémie Roland.
+\end{itemize}
+\newgeometry{top=1cm, bottom=0.8cm, left=1.5cm, right=1.5cm} 	
+
+\hspace{3pt}BA Ir. Civil
+\begin{itemize}[label=\larrow{bgcol}]
+	\item Projet de 1\textsuperscript{ère} année : séchoir solaire de poivre destiné à une utilisation au Cambodge, dans la région de Kampot (poivre de Kampot). Du dimensionnement à l'élaboration d'un prototype fonctionnel.
+	\item Projet de 2\ts{ème} année (projet orienté biomédical) : motorisation d'une prothèse de main pour qu'elle puisse tenir un oeuf sans le casser. Des fils et des moteurs ont été utilisés pour imiter le comportement des tendons.
+		
+	\item Projets informatiques académiques : Scrabble en Python, Tower Defense en Java (JavaFX), Reversi (avec intelligence artificielle) en C++, gestionnaire de projet en Java.
+\end{itemize} 
+
+
+
+%---------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%--------------------------------------------------------------------------------------
+\cvsection{Expérience}
+
+\cvevent{02/2022-Présent}{Co-auteur d'un syllabus universitaire}{ULB -- Faculté des Sciences}{
+	En groupe de trois étudiants, nous rédigons des notes pour le cours d'\textit{Introduction à la Mécanique Quantique} de la 2\ts{ème} année de bachelier en Sciences Physiques à l'ULB (\href{https://www.ulb.be/fr/programme/phys-f203}{PHYS-F203}) pour en faire le syllabus officiel du cours\\[1pt]
+}{Le cours est donné par Serge Massar et le travail se fait sous sa supervision.}
+
+\cvevent{2019-Présent}{Représentant étudiant}{ULB -- Ecole Polytechnique de Bruxelles}{
+	J'assure la représentation étudiante dans ma faculté de plusieures manières : siège au Conseil Facultaire, en commission de la filière informatique, en commissions pédagogique, de l'enseignement, et stratégique.\\[1pt]
+}{
+	Je suis également délégué d'année depuis ma 2\textsuperscript{ème} année à l'Université afin d'organiser au mieux les contacts avec les Professeurs.
+}
+
+\cvevent{2021-Présent}{Membre du comité étudiant FabLAB ULB}{ULB -- FabLAB}{
+	Gestion d'un comité étudiant interfacultaire du FabLab ULB.\\[1pt]
+}{Le FabLab ULB est un complexe inscrit dans le réseau numérique des FabLabs qui trouve ses raisons d'être dans un mélange de savoir, de savoir-faire, collaboration, dans le but d'agir sur le monde qui nous entoure.}
+
+
+\cvevent{07 - 08/2021}{Stagiaire d'été (Physique Appliquée)}{ULB - Service de métrologie nucléaire}{
+	J'ai reçu une bourse d'initiation à la recherche afin de découvrir le métier de chercheur et de contribuer à un travail d'un service de recherche : le service de métrologie nucléaire.	\\[1pt]
+}{
+	Au sein d'une équipe de recherche, j'ai été en charge de la conception d'un algorithme d'optimisation d'une machine utilisée pour la protonthérapie (IBA ProteusOne).
+}
+
+\cvevent{2020-2021}{Responsable IT}{ULB - Bureau Etudiant de Polytechnique}{
+	Gestion, en duo, de l'infrastructure informatique de l'association étudiante de ma faculté. Principalement : gestion de serveur, de site web (Wordpress), mailing lists.\\[1pt]
+}{
+	Développement de certains projets informatiques ciblant l'aide à la réussite des étudiants de la faculté : Alghoraires, un algorithme réalisant un horaire d'examen oral optimal en fonction des préférences individuelles d'étudiants, et un site mettant en forme une "Banque à questions d'examen".
+}
+
+\cvevent{2020-2022}{Etudiant-assistant (x2)}{ULB - Ecole Polytechnique de Bruxelles}{
+	En un groupe de 5 étudiants, nous avons travaillé pour l'amélioration des supports des cours d'Analyse des deux premières années du bachelier d'ingénieur civil, dispensés par Pr. A. Delandtsheer ; et avec une étudiante, pour le cours d'Algèbre Linéaire et Géométrie de Pr. J. Dohet-Eraly (MATH-H1001, MATH-H1002, MATH-H1003, MATH-H2000). \\[1pt]
+}{
+	Gestion d'un document de plusieurs centaines de pages en \LaTeX . Réalisation de figures (2D, 3D) utilisant le package TikZ. Illustration de champs de vecteurs, de fonctions en 3D utilisant le package pgfplots. \\[2pt]
+}
+
+\cvsection{Compétences principales}\\[2pt]
+\metasection{Outils :}{\LaTeX, Python, Java, SQL, C++, Linux (Arch, Ubuntu), suite Office.}
+\metasection{Technologies :}{Bases de données, visualisation de données (y compris pour la statistique expérimentale), algorithmes génétiques.}
+\metasection{Qualités :}{
+	curieux, efficace, travailleur, passionné, soigneux, organisé.
+}
+
+\cvsection{Personnel}\\[2pt]
+\metasection{Hobbies :}{Boxe, football, lecture, programmation.}
+\metasection{Langues parlées :}{Français (langue maternelle), Anglais (usage professionnel), Néerlandais (connaissance basique), Arabe (connaissance basique).}
+%-------------------------------------------------------------------------------------------------
+%	ARTIFICIAL FOOTER (fancy footer cannot exceed linewidth) 
+%--------------------------------------------------------------------------------------------------
+
+% \null
+% \vspace*{\fill}
+% \hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\mystrut \small \textcolor{white}{\href{https://www.linkedin.com/in/sami-abdul-sater-867469185/}{linkedin.com/in/sami-abdul-sater/}} $\cdot$ \textcolor{white}{
+% 	\href{https://www.github.com/jemappellesami}{github.com/jemappellesami}
+% }}}
+
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT END
+%
+%
+%
+%============================================================================%
+\end{document}
