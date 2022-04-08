@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1647013780 "/home/sami/Documents/latexcv/modern/CV_Sami.tex" "CV_Sami.pdf" "CV_Sami" 1647013781
-  "/home/sami/Documents/latexcv/modern/CV_Sami.tex" 1647013780 20191 a9a7f612a005ff97bcbef09c57b15290 ""
+["pdflatex"] 1648711656 "/home/sami/Documents/latexcv/modern/CV_Sami.tex" "CV_Sami.pdf" "CV_Sami" 1648711657
+  "/home/sami/Documents/latexcv/modern/CV_Sami.tex" 1648711656 20212 80fea16f4ea8f48a46d4b0733b4ec61b ""
   "/usr/share/texmf-dist/fonts/enc/dvips/raleway/a_bzmckq.enc" 1640612286 2956 e1fccf4917ff205596489dab079ad56f ""
   "/usr/share/texmf-dist/fonts/enc/dvips/raleway/a_yqxcf3.enc" 1640612286 3099 96ea04418bfcf989c5380b59031fa39d ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1640600964 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -177,9 +177,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1640600964 39911 2da6c67557ec033436fe5418a70a8a61 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1644543295 4243317 6cd4c1d3b72728bfa7db8ef2e14c0430 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1644543276 2920104 56e3227fc8927e00be7dac19f110360f ""
-  "CV_Sami.aux" 1647013780 686 470fdebd29f279999e89f3533b8c7bc8 "pdflatex"
-  "CV_Sami.out" 1647013780 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "CV_Sami.tex" 1647013780 20191 a9a7f612a005ff97bcbef09c57b15290 ""
+  "CV_Sami.aux" 1648711656 686 470fdebd29f279999e89f3533b8c7bc8 "pdflatex"
+  "CV_Sami.out" 1648711656 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "CV_Sami.tex" 1648711656 20212 80fea16f4ea8f48a46d4b0733b4ec61b ""
   "myfoto_2.png" 1647013728 582543 3b316255213bf347ed0b83a8ded054f5 ""
   (generated)
   "CV_Sami.aux"
